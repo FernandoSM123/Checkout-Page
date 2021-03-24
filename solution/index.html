@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleSheet.css">
+    <script src="big.js"></script>
+    <script src="scriptSheet.js"></script>
+    <title>Check Out Page</title>
+</head>
+
+<body onload="getDataFromLocalStorage()">
+
+    <header>
+        <h1>Checkout</h1>
+    </header>
+
+    <section>
+        <form name="myForm" id="myForm" method="post" action="#" onsubmit="getFormData(); return false;">
+            <div class="form-container1">
+                <h3 class="sub-title">Contact Information</h3>
+                <label for="email">Email:</label>
+                <input type="email" name="email" placeholder="Enter your email..." required="required">
+
+                <label for="phone">Phone:</label>
+                <input type="tel" name="phone" placeholder="Enter your phone..." required="required">
+            </div>
+
+            <div class="form-container2">
+                <h3 class="sub-title">Shipping address:</h3>
+                <label for="name">Full Name:</label>
+                <input class="input-Name" type="text" name="name" placeholder="Your name..." required="required">
+
+                <label for="address">Address:</label>
+                <input class="input-address" type="text" name="address" placeholder="Your address..."
+                    required="required">
+
+                <label for="city">City:</label>
+                <input class="input-city" type="text" name="city" placeholder="Your city..." required="required">
+            </div>
+
+            <div class="form-container3">
+                <div class="form-container3-1">
+                    <label for="country">Country:</label>
+                    <select name="country">
+                        <option value="USA">USA</option>
+                        <option value="Costa Rica">Costa Rica</option>
+                        <option value="España">España</option>
+                    </select>
+                </div>
+
+                <div class="form-container3-2">
+                    <label for="postalCode">Postal Code:</label>
+                    <input type="number" min="0" name="postalCode" placeholder="Your postal code..."
+                        required="required">
+                </div>
+            </div>
+
+            <div class="form-container4">
+                <div class="form-container4-1">
+                    <input type="checkbox" name="checkbox">
+                </div>
+
+                <div class="form-container4-2">
+                    Save this Information for next time
+                </div>
+            </div>
+
+            <div class="form-container5">
+                <input type="submit" value="Continuar" class="btn-form">
+            </div>
+        </form>
+    </section>
+
+    <aside>
+        <!--Backbag-->
+        <div class="aside-box">
+            <div class="aside-box1">
+                <img src="photo1.png" class="my-img">
+            </div>
+
+            <div class="aside-box2">
+                <div class="aside-box2-1">
+                    <b>Vintage Backbag</b>
+                    <div style="margin-top: 10px;">
+                        <span class="orange-span">$54.99</span>
+                        <span class="black-span">$94.99</span>
+                    </div>
+                </div>
+
+                <div class="aside-box2-2">
+                    <button class="myBtn" onclick="decreaseItem(0)">-</button>
+                    <p id="0">0</p>
+                    <button class="myBtn" onclick="increaseItem(0)">+</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!--shoes-->
+        <div class="aside-box">
+            <div class="aside-box1">
+                <img src="photo2.png" class="my-img">
+            </div>
+
+            <div class="aside-box2">
+                <div class="aside-box2-1">
+                    <b>Levi Shoes</b>
+                    <div style="margin-top: 10px;">
+                        <span class="orange-span">$74.99</span>
+                        <span class="black-span">$124.99</span>
+                    </div>
+                </div>
+
+                <div class="aside-box2-2">
+                    <button class="myBtn" onclick="decreaseItem(1)">-</button>
+                    <p id="1">0</p>
+                    <button class="myBtn" onclick="increaseItem(1)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="shopping-info">
+            <!--shipping-->
+            <hr>
+            <div class="numItems">
+                <h3>Number of items:</h3>
+                <p id="numItems">0</p>
+            </div>
+
+            <!--total-->
+            <hr>
+            <div class="total">
+                <h3>Total:</h3>
+                <p id="total">$0</p>
+            </div>
+            <hr>
+        </div>
+    </aside>
+
+    <footer>
+        <p>Fernado SM &copy; DevChallenges.io</p>
+    </footer>
+
+    <div class="overlay" id="overlay">
+        <div class="popUp">
+            <h3>Datos de la compra</h3>
+
+            <div class="popUp-box">
+
+                <div class="client-data">
+                    <h4 class="sub-title" style="color: #404040;">Datos del cliente</h4>
+
+                    <hr>
+                    <div>
+                        <b>Nombre:</b>
+                        <p id="name"></p>
+                    </div>
+                    <hr>
+
+                    <div>
+                        <b>Email:</b>
+                        <p id="email"></p>
+                    </div>
+                    <hr>
+
+                    <div>
+                        <b>Phone:</b>
+                        <p id="phone"></p>
+                    </div>
+                    <hr>
+
+                    <div>
+                        <b>Address:</b>
+                        <p id="address"></p>
+                    </div>
+                    <hr>
+
+                    <div>
+                        <b>Country:</b>
+                        <p id="country"></p>
+                    </div>
+                    <hr>
+
+                    <div>
+                        <b>City:</b>
+                        <p id="city"></p>
+                    </div>
+                    <hr>
+
+                    <div>
+                        <b>Postal Code:</b>
+                        <p id="postalCode"></p>
+                    </div>
+                    <hr>
+
+                </div>
+
+                <div class="Purchase-info">
+                    <h4 class="sub-title" style="color: #404040;">Items comprados</h4>
+                    <table id="myTable">
+                        <thead>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                        </thead>
+
+                        <tbody id="table-body">
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" class="label-col"><b>Total:</b></td>
+                                <td id="cantidad-col">0</td>
+                                <td id="total-col">$0</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+            </div>
+            <button class="btn-cerrar" onclick="closePopUp()">Cerrar</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
